@@ -1,17 +1,23 @@
 # aman_website
 
+11/3/2020
+SaleemAZAR
+
 Some basic notes:
 
-1- after you run the server you can use sign_in, sign_up, and home page
-  1.1- sign_in and sign_up in the same URL which is localhost:8000
-  1.2- for the home page you must use localhost:8000/home
+1- DB is done now!
+  1.1 Therefore, you can't access the site without a real pass and user name.
+  1.2 Register page is done, so if you want to insert a new record and save it directly in the DB you can do it.
+  1.3 You can use this email "BZU@edu.com" and pass "1234" or "12345" to login in.
   
-2- I have made a database you can see it in the admin dashboard
-  2.1- you should make a new password and username for you to do that by typing "python manage.py createsuperuser"
-  2.2- I didn't have time to take a real object from the registration page so I made on using CLI
-  
-3- what should you do?
-  3.1- make sure you can continue from where I stopped
-  3.2- you can complete on the home page by adding a video viewer - you will be understood from the dashboard what we have to complete-
-  3.3- if you want to complete on the DB no problem - I mean here by taking records from the registration page and insert them in the DB-
-  
+2- Now we have a 403 page if you entered pass or username incorrect.
+
+3- HTML files have been changed.
+  3.1 Check the input from the registration page and on the login page if there are any mistakes that will show to the user a message!
+
+4- The only page I didn't work on it is the home page, so you can enter your work in an easy way. Make sure there are no conflicts in our files when you do it.
+
+5- What we have else?
+    5.1 Forgot password service, and it's unimportant.
+    5.2 So, our work now on the home page, so let me see what you have done to work with you on it on Thursday; cuz I'm busy now on the BUSA.
+
