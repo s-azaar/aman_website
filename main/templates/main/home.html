@@ -1,86 +1,104 @@
 <html>
-  <head>
+<head>
     <title>A M A N</title>
     <link rel="shortcut icon" href="../../static/images/cctv.png">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../../static/css/homeStyle.css">
-  </head>
-  <body><div class="area"></div><nav class="main-menu">
-            <ul>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-text">
+</head>
+<body>
+<div class="area">
+        <div style = "position:relative; left:80px; top:1px" >
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="myfile">
+            <button type="submit">Upload</button>
+        </form>
+        {% if flag %}
+        <p> can not upload {{ file_type }} file</p>
+        {% endif %}
+        <br>
+        {% if uploaded_file_url %}
+        <img src="{% url 'video_result' %}" alt=" error  !! ">
+        {% endif %}
+    </div>
+</div>
+
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="#">
+                <i class="fa fa-home fa-2x"></i>
+                <span class="nav-text">
                             Dashboard
                         </span>
-                    </a>
+            </a>
 
-                </li>
-                <li class="has-subnav">
-                    <a href="#">
-                        <i class="fa fa-laptop fa-2x"></i>
-                        <span class="nav-text">
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-laptop fa-2x"></i>
+                <span class="nav-text">
                             Change Current Camera
                         </span>
-                    </a>
+            </a>
 
-                </li>
-                <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-plus-square-o fa-2x"></i>
-                        <span class="nav-text">
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-plus-square-o fa-2x"></i>
+                <span class="nav-text">
                             Add New Camera
                         </span>
-                    </a>
+            </a>
 
-                </li>
-                <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-folder-open fa-2x"></i>
-                        <span class="nav-text">
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-folder-open fa-2x"></i>
+                <span class="nav-text">
                             Recordings of Violence
                         </span>
-                    </a>
+            </a>
 
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-bar-chart-o fa-2x"></i>
-                        <span class="nav-text">
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-bar-chart-o fa-2x"></i>
+                <span class="nav-text">
                             Graphs and Statistics
                         </span>
-                    </a>
-                </li>
+            </a>
+        </li>
 
-                <li>
-                   <a href="#">
-                        <i class="fa fa-map-marker fa-2x"></i>
-                        <span class="nav-text">
+        <li>
+            <a href="#">
+                <i class="fa fa-map-marker fa-2x"></i>
+                <span class="nav-text">
                             Map of All Cameras
                         </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                       <i class="fa fa-cogs fa-2x "></i>
-                        <span class="nav-text">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-cogs fa-2x "></i>
+                <span class="nav-text">
                             Settings
                         </span>
-                    </a>
-                </li>
-            </ul>
+            </a>
+        </li>
+    </ul>
 
-            <ul class="logout">
-                <li>
-                   <a href="#">
-                         <i class="fa fa-power-off fa-2x"></i>
-                        <span class="nav-text">
+    <ul class="logout">
+        <li>
+            <a href="#">
+                <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
                             Logout
                         </span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-  </body>
-    </html>
+            </a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

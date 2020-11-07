@@ -121,3 +121,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.A M A N.com']
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
