@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'mkm4i5)unr(8*7j4^fy13o7xe$4g+0i0)br*-q-yl3kv894=u1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -121,3 +121,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.A M A N.com']
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
