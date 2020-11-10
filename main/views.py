@@ -1,21 +1,22 @@
-
 from __future__ import unicode_literals
 
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.shortcuts import render, redirect
+import cv2
+from django.shortcuts import redirect
+from django.views.decorators.cache import cache_control
+
 from .models import CompanyInfo
-from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
-from django.http.response import StreamingHttpResponse
-
+from django.http.response import StreamingHttpResponse, HttpResponse
+from django.contrib.auth import logout as auth_logout
 import os
-import cv2
+
 import numpy as np
 import tensorflow as tf
-from  models.object_detection.utils import label_map_util
+from models.object_detection.utils import label_map_util
 from models.object_detection.utils import visualization_utils as vis_util
+from django.contrib.auth.decorators import login_required, user_passes_test
+
 
 def index(request):
     if request.method == 'POST':
@@ -26,16 +27,18 @@ def index(request):
                                        activation_code=request.POST.get('activation_code'))
             return render(request, 'main/home.html', {})
         elif request.POST.get('signin'):
-            print("i'm hereeeee")
+            print("i'models hereeeee")
+            global username
             username = request.POST.get('username')
             password = request.POST.get('password')
             print(username)
             try:
                 query = CompanyInfo.objects.get(email_of_company=username)
-                print(username+"in try")
+                print(username + "in try")
             except Exception as e:
                 return redirect('403')
             if query.password_of_company == password:
+                request.session['username'] = username
                 return redirect('home')
             else:
                 print("Someone tried to login and failed.")
@@ -157,6 +160,7 @@ def dis():
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + jp + b'\r\n\r\n')
 
+
 def home(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
@@ -176,11 +180,13 @@ def home(request):
                 'uploaded_file_url': uploaded_file_url
             })
         else:
-            flag=True
+            flag = True
             return render(request, "main/home.html", {
-                'flag': flag,'file_type':ext
+                'flag': flag, 'file_type': ext
             })
+
     return render(request, "main/home.html")
+
 
 def video_result(request):
     if uploaded_file_url.find("mp4") != -1:
@@ -188,3 +194,14 @@ def video_result(request):
                                      content_type='multipart/x-mixed-replace; boundary=frame')
 
 
+def logout(request):
+    try:
+        logout(request)
+        del request.session[username]
+    except:
+        pass
+    return render(request, 'main/index.html',{})
+
+
+def addnewcamera(request):
+    return render(request, "main/addnewcamera.html", {})
