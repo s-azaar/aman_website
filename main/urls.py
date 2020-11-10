@@ -9,6 +9,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('home/', views.home, name='home'),
     path('403/',views.page403,name='403'),
+    path('logout/',views.logout,name='logout'),
+    path('addnewcamera/',views.addnewcamera,name='addnewcamera'),
     path('video_result/', views.video_result, name='video_result'),
 
 ]
