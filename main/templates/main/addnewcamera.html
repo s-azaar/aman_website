@@ -1,20 +1,32 @@
 {% extends 'main/home.html' %}
 
-{% block namepage %} <h2 class="mt-2">Add new camera, and let us work!</h2>{% endblock %}
-
+{% block namepage %} <br><h2 class="mt-2">Select the camera.</h2>{% endblock %}
 
 {% block content %}
-
-     <form method="post">
-         <fieldset>
-    <legend>Personalia:</legend>
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname" value="John"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" value="Doe"><br><br>
-    <input type="submit" value="Submit">
-  </fieldset>
-      <button class="submit"  name="signin" value="Login" onclick="alert('Hello World!')">Sign In</button>
-
-     </form>
-{% endblock %}
+<div class="col-8">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <label style="font-size:22">Webcam_type:</label>
+            <select value="" name="webcam_type">
+                <option value="1">Integrated</option>
+                <option value="2">Wireless</option>
+                <option value="3">USB</option>
+            </select>
+            <br>
+            <label style="font-size:22">Device_type:</label>
+            <select value="" name="device_type">
+                <option value="1">Laptop</option>
+                <option value="2">Desktop</option>
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+    </form>
+    <br>
+    {% if camera_supported %}
+    <p>Camera not supported</p>
+    {% endif %}
+    {% if camera_flag %}
+    <img src="{% url 'camera_result' %}" alt=" error camera !! ">
+    {% endif %}
+    {% endblock %}
+</div>
