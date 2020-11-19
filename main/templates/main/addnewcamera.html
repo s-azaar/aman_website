@@ -1,32 +1,30 @@
+
 {% extends 'main/home.html' %}
-
-{% block namepage %} <br><h2 class="mt-2">Select the camera.</h2>{% endblock %}
-
+{% block namepage %} <br><h3 class="mt-2">Add New Camera</h3>{% endblock %}
 {% block content %}
 <div class="col-8">
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" onsubmit="myFunction()">
         {% csrf_token %}
-            <label style="font-size:22">Webcam_type:</label>
-            <select value="" name="webcam_type">
-                <option value="1">Integrated</option>
-                <option value="2">Wireless</option>
-                <option value="3">USB</option>
-            </select>
-            <br>
-            <label style="font-size:22">Device_type:</label>
-            <select value="" name="device_type">
-                <option value="1">Laptop</option>
-                <option value="2">Desktop</option>
-            </select>
-            <br>
-            <input type="submit" value="Submit">
+        <div style="text-align: center;">
+
+             <br><br><br><br>
+
+            <label style="font-weight: bold; font-family: 'Monospace',serif;font-size: 20px;margin-left: 50%" for="text">Name of the New Camera:</label>
+           <input style="width: 500px;text-align: center;margin-left: 30%" type="text" id="nameofcamera" name="nameofcamera" required><br>
+            <label style="font-weight: bold; font-family: 'Monospace',serif;margin-left: 50%;font-size: 20px" for="text">IP of the New Camera:</label>
+           <input style="width: 500px;text-align: center;margin-left: 30%"  type="url" id="ipofcamera" name="ipofcamera" required><br><br>
+            <input style="margin-left: 50%;width: 100px"  class="btn btn-success" type="submit" value="Add" name="addnewcamera">
+            </div>
     </form>
-    <br>
-    {% if camera_supported %}
-    <p>Camera not supported</p>
-    {% endif %}
-    {% if camera_flag %}
-    <img src="{% url 'camera_result' %}" alt=" error camera !! ">
-    {% endif %}
-    {% endblock %}
+
 </div>
+
+   <script  type="text/javascript">
+   function myFunction() {
+      alert("Camera Add Successfully!");
+   }
+</script>
+ {% endblock %}
+
+
+

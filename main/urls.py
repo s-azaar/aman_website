@@ -11,8 +11,9 @@ urlpatterns = [
     path('401/',views.page401,name='401'),
     path('logout/',views.logout,name='logout'),
     path('addnewcamera/',views.addnewcamera,name='addnewcamera'),
-    path('video_result/', views.video_result, name='video_result'),
-    path('camera_result/', views.camera_result, name='camera_result'),
+    # path('video_result/', views.video_result, name='video_result'),
+    path('ip_result/', views.ip_result, name='ip_result'),
+    # path('camera_result/', views.camera_result, name='camera_result'),
 
 
 

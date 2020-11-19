@@ -1,12 +1,13 @@
 <html>
 <head>
     <title>A M A N</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="shortcut icon" href="../../static/images/cctv.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../../static/css/homeStyle.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../static/css/homeNOcamera.scss">
+
 
 </head>
 
@@ -155,23 +156,38 @@
     <div class="row justify-content-center">
         <br>
         <div class="col-8">
-            {% block namepage %} <br><h3 class="mt-2">Upload your video to detect acts of violence.</h3> {% endblock %}
+            {% block namepage %} <br><h3 style="font-family: Inter,sans-serif" class="mt-2">You're In!</h3> {% endblock %}
             <hr class="mt-0 mb-4">
             {% block content %}
-            <br>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="file" name="myfile">
-                <br>
-                <br>
-                <button type="submit">Upload</button>
+
             </form>
             {% if flag %}
-            <p> can not upload {{ file_type }} file</p>
+                {% if not url_is_exit%}
+                  <div class="container">
+	                    <div class="text-box">
+		                    <h1>YOUR CAMERA CONNECTION IS BAD!</h1>
+            		        <h1>YOUR CAMERA CONNECTION IS BAD!</h1>
+                        </div>
+		                <p>A M A N @2020<span>:)</span></p>
+{#                           <a class="btn btn-danger" href="{% url 'home' %}">Refresh the Page</a>#}
+                  </div>
+                {% endif %}
+            {% else %}
+                  {% if not url_is_exit %}
+                         <div class="container">
+	                    <div class="text-box">
+		                    <h1>YOU DON'T HAVE ANY CAMERA YET!</h1>
+            		        <h1>YOU DON'T HAVE ANY CAMERA YET!</h1>
+                        </div>
+                           <p>A M A N @2020<span>:)</span></p>
+                  </div>
+                  {% endif %}
             {% endif %}
             <br>
-            {% if uploaded_file_url %}
-            <img src="{% url 'video_result' %}" alt=" error  !! ">
+            {% if url_is_exit %}
+            <img src="{% url 'ip_result' %}" alt=" error  !! ">
             {% endif %}
             {% endblock %}
         </div>
