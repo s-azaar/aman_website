@@ -1,9 +1,11 @@
-# aman_website
+# A M A N Website'
 
-10\11
+## By Saleem - 19/20 
 
-السلام عليكم
-كنت حاب اعمل واجهة تسجيل كاميرا جديدة اول اشي وهاي الواجهة كنت مخطط توخد اسم الكاميرا والايبي تبعها وتخزنهم بالدا تا بيس مع الشركة الي عاملة حساب بعدها بروح على الداش بورد وبظهر الفيديو الي راح اقرأه من الاي بي 
-اعمل الي بدك اياه والي بتشوفوه مناسب ما تلتزم بالي كنت اعمله 
-كبسات الهوم بيج مع اضافة كاميرا جديدة وتسجي الخروج شغلات شوف كيف عملتهم اذا بدك تعمل اشي زي هيك
-مع السلامة
+#### THE IMPORTANT NOTES YOU SHOULD KNOW!
+1. Added table for the cameras:
+
+    * This table takes the ID  of the user  ****who have this camera****
+    * It's worth to know that ID is an ****Object**** not as MYSQL
+    * So, when you want to take an info from a user or a camera you should give the query an ****Object****
+    
