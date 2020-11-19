@@ -9,7 +9,7 @@
     * It's worth to know that ID is an ****Object**** not as MYSQL
     * So, when you want to take an info from a user or a camera you should give the query an ****Object****
   
-2. To use or website:
+2. To use our website:
 
    * Install ****IP WEBCAM**** on your Android phone
    * Run the WEBCAM server from your phone
