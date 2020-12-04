@@ -220,7 +220,13 @@ def addnewcamera(request):
         if request.POST.get('addnewcamera'):
             ip_camera = request.POST.get('ipofcamera')
             name_camera = request.POST.get('nameofcamera')
-            company = CompanyInfo.objects.get(email_of_company=current_user)
+            
+            if not is_company:
+                current_police = UserInfo.objects.get(email_of_user=current_user)
+                company = current_police.company_id
+
+            else:
+                company = CompanyInfo.objects.get(email_of_company=current_user)
 
             number_camera = company.number_of_camera
 
